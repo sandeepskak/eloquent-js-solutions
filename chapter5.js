@@ -48,3 +48,25 @@ for(var i=0; i<uniqueCenturies.length; i++){
       }
   }
 }
+
+//Exercise 4
+
+function every(array, action) {
+  var result;
+  array.forEach(function(item) {
+    result = action(item);
+  });
+  return result;
+}
+
+function some(array, action) {
+  var result;
+  for(var i=0; i<array.length; i++) {
+    result = action(array[i]);
+    if(result) {
+      result = true;
+      break;
+    }
+  }
+  return result;
+}
