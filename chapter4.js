@@ -67,3 +67,31 @@ function nth(list, n) {
 }
 
 // Exercise 4
+function deepEqual(param1, param2) {
+  if (param1 === param2) return true;
+  if(typeof param1 !== 'object' || typeof param2 !== 'object')
+   return false;
+  // both arguments are indeed objects:
+  else {
+    //return true;
+    return compareProperties(param1, param2);
+  }
+}
+
+function getPropertyCount(obj) {
+  var properties = [];
+  for(prop in obj) properties.push(prop);
+  return properties.length;
+}
+
+function compareProperties(obj1, obj2) {
+  var count1 = getPropertyCount(obj1);
+  var count2 = getPropertyCount(obj2);
+  if (count1 !== count2)
+    return false;
+  else {
+    for(prop in obj1) {
+      return deepEqual(obj1[prop], obj2[prop])
+    }
+  }
+}
