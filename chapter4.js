@@ -19,4 +19,51 @@ function sum(array) {
     total += array[i];
   return total;
 }
+
+
 // Exercise 2
+function reverseArray(array) {
+  var result = [];
+  for (var i = array.length -1; i >= 0; i--)
+    result.push(array[i]);
+  return result;
+}
+
+function reverseArrayInPlace(array) {
+  for (var i = 0; i < Math.floor(array.length / 2); i++) {
+    var temp = array[i];
+    array[i] = array[array.length - 1 - i];
+    array[array.length - 1 - i] = temp;
+  }
+  return array;
+}
+
+// Exercise 3
+function arrayToList(array) {
+  var list = null;
+  for (var i = array.length - 1; i >= 0; i--)
+    list = {value: array[i], rest: list};
+  return list;
+}
+
+function listToArray(list) {
+  var array = [];
+  for (var node = list; node; node = node.rest)
+    array.push(node.value);
+  return array;
+}
+
+function prepend(value, list) {
+  return {value: value, rest: list};
+}
+
+function nth(list, n) {
+  if (!list)
+    return undefined;
+  else if (n == 0)
+    return list.value;
+  else
+    return nth(list.rest, n - 1);
+}
+
+// Exercise 4
