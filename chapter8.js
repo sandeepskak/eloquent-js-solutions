@@ -25,3 +25,40 @@ function reliableMultiply(a, b) {
 }
 
 console.log(reliableMultiply(8, 8));
+//Exercise 2
+function withBoxUnlocked(body) {
+  // Your code here.
+  if(box.locked) {
+    box.unlock();
+    try{
+      body();
+    } catch(e){
+      throw e;
+    } finally{
+      box.lock();
+    }
+    box.lock();
+  } else {
+     try{
+      body();
+     } catch(e){
+        throw e;
+     } finally{
+      box.lock();
+    }
+  }
+}
+
+withBoxUnlocked(function() {
+  box.content.push("gold piece");
+});
+
+try {
+  withBoxUnlocked(function() {
+    throw new Error("Pirates on the horizon! Abort!");
+  });
+} catch (e) {
+  console.log("Error raised:", e);
+}
+console.log(box.locked);
+// → true
