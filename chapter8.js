@@ -28,24 +28,14 @@ console.log(reliableMultiply(8, 8));
 //Exercise 2
 function withBoxUnlocked(body) {
   // Your code here.
-  if(box.locked) {
+  if(box.locked)
     box.unlock();
-    try{
-      body();
-    } catch(e){
-      throw e;
-    } finally{
-      box.lock();
-    }
+  try{
+    body();
+  } catch(e){
+    throw e;
+  } finally{
     box.lock();
-  } else {
-     try{
-      body();
-     } catch(e){
-        throw e;
-     } finally{
-      box.lock();
-    }
   }
 }
 
